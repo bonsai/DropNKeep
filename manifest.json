@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "DropNKeep",
+  "version": "0.1.0",
+  "description": "Drag & drop .txt files to create Google Keep notes (Phase 1)",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["https://keep.google.com/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://keep.google.com/*"],
+      "js": [
+        "content/keep-client.js",
+        "content/drop-handler.js",
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}
